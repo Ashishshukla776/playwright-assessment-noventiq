@@ -1,8 +1,9 @@
 import { Locator, Page } from '@playwright/test';
 import dotenv from 'dotenv';
+import { loginSel } from '../selectors/login';
 dotenv.config();
 
-export class loginPage {
+export class LoginPage {
 
     readonly page: Page;
     readonly username: Locator;
@@ -11,20 +12,20 @@ export class loginPage {
 
     constructor(page: Page) {
         this.page = page
-        this.username = this.page.locator(`#username`);
-        this.password = this.page.locator(`#password`);
-        this.submitLogin = this.page.locator(`#submit`);
+        this.username = this.page.locator(loginSel.user);
+        this.password = this.page.locator(loginSel.password);
+        this.submitLogin = this.page.locator(loginSel.submit);
     }
 
     // Login page navigation
     async navigation() {
-        this.page.goto(`https://practicetestautomation.com/practice-test-login/`);
+        await this.page.goto(`${process.env.URL}practice-test-login/`);
     };
 
     //Authenticate user via login form
     async login(username?: string, password?: string) {
 
-        const user_name = username ?? process.env.USERNAME!;
+        const user_name = username ?? process.env.USER!;
         const user_password = password ?? process.env.PASSWORD!;
 
         // Fill the input field

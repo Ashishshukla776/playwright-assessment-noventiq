@@ -1,6 +1,16 @@
 # playwright-assessment-noventiq
 Playwright-based automated test framework for NoventiQ assessment. Includes functional test scripts, page object models, and configuration for scalable and maintainable web application testing.
 
+# Note:
+```
+I have used **dotenv** in this project.  
+Please create a `.env` file in the **root directory** and copy the content from the provided `exampleenv` file.
+
+Since this is a test project, the `exampleenv` file already contains **valid credentials** for testing purposes.
+
+```
+
+
 # Features
 - Automated functional test scripts (positive & negative scenarios)
 - Page Object Model (POM) for clean test structure
@@ -42,8 +52,11 @@ npx playwright test
 npx playwright test --ui
 ```
 # Generate and view report
+Test execution reports are generated using Playwright's HTML reporter.
+
+To view the report:
+
 ```
 npx playwright show-report
 ```
 
-npx playwright show-report
